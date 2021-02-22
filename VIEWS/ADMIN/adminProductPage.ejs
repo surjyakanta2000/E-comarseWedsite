@@ -1,0 +1,66 @@
+<%- include('../INCLUDES/header.ejs') %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel='stylesheet' href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+    <link rel='stylesheet' href="/CSS/AdminProPage.css">
+<body>
+<%- include('../INCLUDES/adminNav.ejs') %>
+  <div class="container mb-3 mt-3">
+    <table class="table table-striped table-bordered mydatatable" style="width: 100%">
+        <thead>
+            <tr class="text-center font-bold">
+                <th>Title</th>
+                <th>Description</th>
+                <th>price</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(data.length>0){ %>
+                <% for(let p of data){ %>
+            <tr class="text-center">
+                <td><%= p._title %></td>
+                <td><%= p._description %></td>
+                <td><%= p._price %></td>
+                <td class="img-fluid"><img style="width:15%;" class="img-fluid" src="../../<%= p._image %>"></td>
+                <td style="text-align:center;">
+                    <a href="/admin/productEdit/<%=p._id%>"><button class="btn btn-outline-primary">Change</button></a>
+                    <a href="/admin/productDelet/<%=p._id%>"><button type="submit" class="btn btn-outline-danger">Delete</button></a>
+                </td>
+            </tr>
+            <% } %>
+            <% }else{%>
+               <h1>Data not Found!!!!</h1> 
+            <% } %>
+          
+        </tbody>
+        <tfoot>
+        <tr class="text-center">
+            <th>Title</th>
+            <th>Description</th>
+            <th>price</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>
+        </tfoot>
+    </table>
+  </div>  
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"></script>
+<!--Bootstrap JavaScript-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+</script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    $('.mydatatable').Datatable();
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<%- include('../INCLUDES/header.ejs') %>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/CSS/AdminView.css">
+</head>
+<body>
+<%- include('../INCLUDES/adminNav.ejs') %>
+<div>
+    <div class="hero">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button class="toggle-btn text-center" onClick="loginAdmin()">Admin</button>
+                <button class="toggle-btn text-center" onClick="addAdmin()">Add</button>
+            </div>
+            <div class="social-icons">
+                <img src="/IMAGES/fb.png">
+                <img src="/IMAGES/ig.png">
+                <img src="/IMAGES/share.png">
+                <img src="/IMAGES/tw.png">
+            </div>
+            <form action="/admin/login" method="POST" id="login" class="input-group">
+                <input type="text" class="input-field" name="email" placeholder="Admin-Id" required>
+                <input type="text" class="input-field" name="password" placeholder="Password" required><br><br>
+                <input type="checkbox" name="check" class="check-box"><span>Remember me</span>
+                <button class="submit-btn" style="margin-left:1rem;" type="submit">Login</button>
+            </form>
+            <form action="/admin/register" method="POST" id="add" class="input-group">
+                <input type="text" class="input-field" name="name" placeholder="Enter your name" required>
+                <input type="text" class="input-field" name="email" placeholder="Email-Id" required>
+                <input type="text" class="input-field" name="phone" placeholder="Phone-No" required>
+                <input type="text" class="input-field" name="password" placeholder="Set Password" required><br><br>
+                <input type="checkbox" name="check" class="check-box"><span>I agree to the terms and conditions</span>
+                <button class="submit-btn" style="margin-left:2px;margin-top:-1px;" type="submit">Add</button>
+            </form>
+        </div>
+        
+    </div>
+</div>
+<script type="text/javascript">
+    var x=document.getElementById("login");
+    var y=document.getElementById("add");
+    var z=document.getElementById("btn");
+
+    function addAdmin()
+    {
+        x.style.left='-500px';
+        y.style.left='23px';
+        z.style.left='110px';
+    }
+    function loginAdmin()
+    {
+        x.style.left='22px';
+        y.style.left='450px';
+        z.style.left='0px';
+    }
+</script>
+<%- include('../INCLUDES/fotter.ejs') %>

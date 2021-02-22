@@ -1,0 +1,27 @@
+<%- include('../INCLUDES/header.ejs') %>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanalei&family=Lobster&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/CSS/AdminPanel.css">
+</head>
+<body>
+<%- include('../INCLUDES/adminNav.ejs') %>
+<main>
+    <section class="glass">
+        
+        <form action="/admin/admin-panel/add-product" method="POST" enctype="multipart/form-data">
+            <h1 style="color:#6cdbed;">Add-Product</h1>
+            <p class="text-left"  style="font-weight: bold;font-size:1.5rem;color:#6cdbed">Title:</p>
+            <input class="bg-transparent text-white" style="width: 100%;height: 2rem;" type="text" name="title" placeholder="Title">
+            <p class="text-left" style="font-weight: bold;font-size:1.5rem;color:#6cdbed">Description:</p>
+            <input class="bg-transparent text-white" style="width: 100%;height: 2rem;" type="text" name="description" placeholder="Description">
+            <p class="text-left" style="font-weight: bold;font-size:1.5rem;color:#6cdbed">price:</p>
+            <input class="bg-transparent text-white" style="width: 100%;height: 2rem;" type="text" name="price" placeholder="Price">
+            <p class="text-left"  style="font-weight: bold;font-size:1.5rem;color:#6cdbed">Image:</p>
+            <input class="bg-transparent text-white" style="width: 100%;height: 2rem;" type="file" name="product_image" placeholder="image">
+            <input type="submit" class="btn btn-outline-info text-center ml-7" style="width: 80%;margin-top:2rem;" name="submit" value="Add Product">
+        </form>
+    </section>
+  </main>
+  <div class="circle1"></div>
+  <div class="circle2"></div>
+<%- include('../INCLUDES/fotter.ejs') %>

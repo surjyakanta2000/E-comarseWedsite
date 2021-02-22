@@ -1,0 +1,113 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Lobster', cursive;
+}
+body{
+    min-height: 100vh;
+    background:linear-gradient(to right top,#6ef7dd,#5ee5fa);
+    /* background:linear-gradient(to right top,#1a3a49be,#154b44); */
+}
+section{
+    height: 35vh !important;
+    background:linear-gradient(to right top,#6ef7dd,#5ee5fa);
+    /* background:linear-gradient(to right top,#1b1349,#140236); */
+}
+section:before
+{
+    content: '';
+    position: absolute;
+    top: 8.7%;
+    left: 0;
+    width: 100%;
+    height: 34vh;
+    background:linear-gradient(to right,#7ee9fa,#f00,#f00,#0f0,#0ff,#ff0,#0ff);
+    mix-blend-mode: color;
+    pointer-events: none;
+}
+video
+{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    object-fit:cover;  
+}
+h1{
+    margin:0;
+    padding:0;
+    position: absolute;
+    top: 25%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    color:#fff;
+    /* background:linear-gradient(to right,#5ee5fa,#f00,#f00,#0f0,#0ff,#ff0,#0ff); */
+    /* mix-blend-mode: color; */
+    /* pointer-events: none; */
+    font-size:3em;
+    font-family: sans-serif;
+    letter-spacing: 0.2em;
+    
+}
+h1 span{
+    opacity: 0;
+    display: inline-block;
+    animation: animate .7s linear forwards;
+}
+@keyframes animate 
+{
+    0%{
+        opacity: 0;
+        transform:rotateY(90deg);
+        filter:blur(10px);
+    }
+    100%{
+        opacity: 1;
+        transform: rotate(0deg);
+        filter:blur(0);
+    }
+}
+h1 span:nth-child(1)
+{
+    animation-delay: 1s;
+    font-size:2em;
+}
+h1 span:nth-child(2)
+{
+    animation-delay:1s;
+}
+h1 span:nth-child(3)
+{
+    animation-delay:1.5s;
+}
+h1 span:nth-child(4)
+{
+    animation-delay:2s;
+}
+h1 span:nth-child(5)
+{
+    animation-delay:2.5s;
+}
+h1 span:nth-child(6)
+{
+    animation-delay:2.75s;
+}
+h1 span:nth-child(7)
+{
+    animation-delay:3s;
+}
+h1 span:nth-child(8)
+{
+    animation-delay:3.5s;
+}
+h1 span:nth-child(9)
+{
+    animation-delay:3.75s;
+}
+@media (max-width: 991px)
+{
+    section{
+        display: none;
+    }
+}

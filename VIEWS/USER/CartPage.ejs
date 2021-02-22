@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/CSS/CartPage.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>cart-page</title>
+  </head>
+  <body>
+    <%- include('../INCLUDES/userNav.ejs') %> 
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10 col-11 mx-auto">
+          <div class="row mt-5 gx-3">
+            <!-- left side  -->
+            <div class="col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5 shadow">
+              <div class="card p-4 mt-1">
+                <div style="display:flex;">
+                <h2 class="py-2 font-weight-bold">Cart</h2>
+                <a href="/shop"><button class="btn addItem btn-outline-primary">Add Item</button></a>
+                </div>
+                <% if(data.length>0){ %>
+                    <% for(let c of data){ %>
+                <div class="row">
+                  <div class="col-md-5 col-12 mx-auto bg-transparent d-flex justify-content-center align-items-center shadow product_img">
+                    <img src="../../<%=c.Cart[0]._image %>" class="img-fluid" alt="/IMAGES/admin.png">
+                  </div>
+                  <!-- product detail -->
+                  <div class="col-md-7  col-11 mx-auto px-4 mt-2">
+                      <div class="row">
+                        <div class="col-6 card-title">
+                          <h1 class="mb-4 product_name"><%=c.Cart[0]._title %></h1>
+                            <p class="mb-2" >$<span><%=c.Cart[0]._price %></span></p>
+                            <input type="hidden" name="product_price" id="<%=c.Cart[0]._title %>" value="<%=c.Cart[0]._price %>" >
+                        </div>
+                        <!-- quantity -->
+                        <div class="col-6">
+                          <ul class="pagination justify-content-end set_quantiti">
+                            <li class="page-item">
+                              <button class="page-link" onclick="decrease('<%=c.Cart[0]._id %>','<%=c.Cart[0]._price %>','<%=c.Cart[0]._title %>')"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                            </li>
+                            <li class="page-item"><input type="text" class="page-link quantity" name="Quantity" value="0" id="<%=c.Cart[0]._id %>"></li>
+                            <li class="page-item">
+                              <button class="page-link" onclick="increase('<%=c.Cart[0]._id %>','<%=c.Cart[0]._price %>','<%=c.Cart[0]._title %>')"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <!-- remove item -->
+                      <div class="row">
+                        <div class="col-8 d-flex justify-content-between remove-and-wish">
+                          <a href="/user/cartDelete/<%=c._id %>"><p class="p-1 text-danger"><i class="fa fa-trash" aria-hidden="true"></i>Remove item</p></a>
+                          <p class="p-1 text-primary"><i class="fa fa-heart" aria-hidden="true"></i>move to wish list</p>
+                        </div>
+                        <div class="col-4 d-flex justify-content-end price_money">
+                          <h3>$<span id="<%=c.Cart[0]._price %>">0.00</span></h3>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <hr>
+                <%}%>
+                <%} else{%>
+                  <a href="/shop"><h1 class="text-danger">No Item in cart..<i class="fa fa-plus animation" aria-hidden="true"></i><span> </span><i class="fa fa-plus animation" aria-hidden="true"></i></h1></a>
+                <%} %>
+
+              </div>
+            </div>
+            <!-- right side -->
+            <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
+              <div class="right_side p-3 shadow bg-class">
+                <h2 class="product_name mb-5"> The total amount of</h2>
+                <div class="price_indiv d-flex justify-content-between">
+                  <p>product amount</p>
+                  <p>$ 
+                      <span id="product_total_amt">0.00</span></p>
+                   
+                </div>
+                <div class="price_indiv d-flex justify-content-between">
+                  <p>Shipping charge</p>
+                  <p>$<span id="shipping_total_amt">50.0</span></p>
+                </div>
+                <hr />
+                <div class="total-amt d-flex justify-content-between font-weight-bold">
+                  <p>The total amount of (including GST)</p>
+                  <p>$<span id="total_cart_amt">0.00</span></p>
+                </div>
+                <% if(data){ %>
+                <input type="text" value="<%=data[0].userId %>">
+                <a href="/shop/checkout/<%=data[0].userId %>"><button class="btn btn-primary text-uppercase">CheckOut</button></a>
+                <%}%>
+
+              </div>
+              <div class="discount_code mt-3 shadow">
+                <div class="card">
+                  <div class="card-body">
+                    <a class="d-flex justify-content-between" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      Add a discount code(optional)
+                      <span><i class="fa fa-chevron-down pt-1"></i></span>
+                    </a>
+                    <div class="collapse" id="collapseExample">
+                      <div class="mt-3">
+                        <input type="text" name="" id="discount_code1" class="from-control font-weight-bold" placeholder="Enter Code">
+                        <small id="error_trw" class="text-dark mt-3" >
+                          code is your-name
+                        </small>
+                      </div>
+                      <button class="btn btn-primary btn-sm-3 mt-1" onclick="discount_code()">Apply</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-3 shadow p-3 bg-class">
+                <div class="pt-4">
+                  <h5 class="mb-4">Expected delivery date</h5>
+                  <p>february 2nd 2021 - february 5th 2021</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ 
+    <script>
+
+      const product_total_amt= document.getElementById("product_total_amt");
+      const total_cart_amt= document.getElementById("total_cart_amt");
+      const shipping_total_amt= document.getElementById("shipping_total_amt");
+      console.log(parseInt(product_total_amt.innerHTML));
+        const  decrease=(incdnc,itemprice,price)=>{
+            const itemval=document.getElementById(incdnc);
+            const itemPrice=document.getElementById(itemprice);
+            const mainPrice=document.getElementById(price);
+            const fixedPrice = mainPrice.value;
+            const finalValue = parseInt(itemPrice.innerHTML);
+            console.log(finalValue);
+            if(itemval.value <=0)
+            {
+              itemval.value=0;
+              alert("Minimum 1 item required");
+            }
+            else
+            {
+              itemval.value=parseInt(itemval.value)-1;
+              itemPrice.innerHTML = fixedPrice *itemval.value;
+              product_total_amt.innerHTML = itemPrice.innerHTML
+              total_cart_amt.innerHTML = (fixedPrice *itemval.value)+50;
+              itemval.style.background = '#fff';
+              itemval.style.color = '#000';
+            }
+        }
+
+        const  increase=(incdnc,itemprice,price)=>{
+            const itemval=document.getElementById(incdnc);
+            const itemPrice=document.getElementById(itemprice);
+            const mainPrice=document.getElementById(price);
+            const fixedPrice = mainPrice.value;
+            if(itemval.value >= 5)
+            {
+              itemval.value=5;
+              alert("Maximum 5 item allowed");
+              itemval.style.background = 'red';
+              itemval.style.color = '#fff';
+            }
+            else
+            {
+              itemval.value=parseInt(itemval.value) + 1;
+              itemPrice.innerHTML = fixedPrice *itemval.value;
+              product_total_amt.innerHTML = itemPrice.innerHTML 
+              total_cart_amt.innerHTML = (fixedPrice *itemval.value)+50;
+            }
+        }
+    </script>
+  </body>
+</html>

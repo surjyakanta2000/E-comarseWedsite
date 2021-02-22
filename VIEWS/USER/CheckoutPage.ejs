@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/CheckOut.css">
+
+    <title>CART CHECKOUT</title>
+  </head>
+  <body>
+   <div class="model">
+       <div class="left_side justify-content-center">
+        <div class="card" style="height: 90%;">
+            <h3 class="card-title">Product's:</h3>
+            <div class="col">
+            <% if(cartData.length > 0) { %>
+                <% for(let c of cartData) { %>
+                <div class="row-lg-12 row-md-12 row-sm-12 row-12">
+                    <div class="card-body text-center back">
+                        <div class="card-title">
+                        <h2><%=c.Cart[0]._title %></h2>
+                        </div>
+                        <img class="card-img img-fluid" src="../../<%=c.Cart[0]._image %>">
+                        <input type="number" class="quantity text-center" value="1" name="quantity" placeholder='quantity'>
+                        <input type="hidden" name="count" value="<%= c.Cart[0]._price %>">
+                        <span id="totalPrice" value="<%= c.Cart[0]._price %>"><%= c.Cart[0]._price %></span>
+                    </div>
+                </div>
+             <%}}%>
+            </div>
+        </div>
+        <div class="card" style="height: 100%;">
+        <div class="card-bottom">
+            <input type="text" style="width:60%;" id="totalPrice" class="grand-total" name="total_price" placeholder='total amt.' readonly> 
+            <span class="m-2">Total Amount</span>
+        </div>
+        </div>
+        </div>
+    <div class="form">
+        <form action="/user/order" method="POST">
+            <% if(cartData.length > 0) { %>
+                <% for(let c of cartData) { %>
+            <p>Payment mood</p>
+            <input type="text" name="payAmt" style="width:10%;" value="<%= c.Cart[0]._price %>"readonly>
+            <input type="checkbox" name="check" style="width:10%;height: 1rem;" class="check-box"><span>COD</span>
+            <input type="hidden" name="product_id" value="<%= c.productId %>">
+            <%}}%>
+            <% if (userData){ %>
+            <input type="hidden" name="userId" value="<%= userData._id %>" placeholder="Enter your name">
+            <p>Name:</p>
+            <input type="text" name="name" value="<%= userData._name %>" placeholder="Enter your name">
+            <p>Email:</p>
+            <input type="text" name="email"  value="<%= userData._email %>" placeholder="Enter your Email">
+            <p>Address:</p>
+            <input type="address" name="address" placeholder="Enter your address">
+            <p>Phone:</p>
+            <input type="text" name="phone" value="<%= userData._phone %>" placeholder="Enter your Phone Number"><br><br>
+            <%}%>
+            <button style="width: 40%;height: 2.5rem;" class="btn btn-outline-primary text-center" style="margin-top:1rem;" type="submit">Save & Continue</button>
+        </form>
+    </div>
+   </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>

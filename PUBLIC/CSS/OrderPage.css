@@ -1,0 +1,139 @@
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+  
+  body {
+    width: 100%;
+    height: 100%;
+    background: #eee;
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  .card-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-wrapper {
+    width: 55%;
+    height: 540px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-flow: column wrap;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  
+  /* WAVES ANIMATION */
+  
+  .card-wrapper .wave {
+    width: 1800px;
+    height: 1500px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: calc(1800px / -2);
+    background: rgb(137, 239, 247);
+    border-radius: 45%;
+    z-index: 11;
+    animation: waves 10s infinite linear;
+    opacity: 0.75;
+  }
+  
+  .card-wrapper .wave.wave-two {
+    animation: waves 15s infinite linear;
+    background: rgb(95, 252, 218);
+  }
+  
+  .card-wrapper .wave.wave-three {
+    animation: waves 25s infinite linear;
+    background: rgb(85, 221, 255);
+  }
+  
+  @keyframes waves {
+    from { transform: rotate(360deg); }
+  }
+
+
+  .slider2
+{
+    background:linear-gradient(to right bottom,rgba(138, 237, 250, 0.5),rgba(125, 253, 211, 0));
+    width:85%;
+    margin-top:.5rem;
+    align-items: right;
+    text-align: right;
+    border-radius:4px;
+    height: 15%;
+}
+.description
+{
+    display:flex;
+    position: relative;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+.user-img img
+{
+    width:10%;
+    align-items:center;
+    text-align:center;
+    justify-content:center;
+}
+  
+  /* -- THIS IS FOR BRANDING PURPOSE ONLY -- */
+  /* ------- YOU MAY DELETE THIS CODE ------ */
+  
+  .card-wrapper {
+    /* margin-top: 50px; */
+    top:10;
+  }
+  
+  #otbd-branding {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    position: fixed;
+    bottom: 0; left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 999;
+  }
+  
+  #otbd-branding a {
+    display: inline-block;
+    height: 40px;
+    margin-left: 20px;
+    transition: all 0.2s ease;
+  }
+  
+  #otbd-branding a:first-child {
+    margin-left: 0;
+  }
+  
+  #otbd-branding a img {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+  }
+  
+  #otbd-branding a:hover {
+    margin-top: -7px;
+  }
+  

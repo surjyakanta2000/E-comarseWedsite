@@ -1,0 +1,44 @@
+<%- include('../INCLUDES/header.ejs') %>
+<link rel="stylesheet" href="/CSS/ShopPage.css">
+</head>
+<body>
+<%- include('../INCLUDES/userNav.ejs') %>
+<section class="container-fluid">
+  <video src="/VIDEO/smoke.mp4" autoplay muted loop></video>
+  <h1>
+    <span>W</span>
+    <span>A</span>
+    <span>L</span>
+    <span>K</span>
+    <span>-</span>
+    <span>W</span>
+    <span>I</span>
+    <span>T</span>
+    <span>H</span>
+  </h1>
+</section>
+<hr>
+<div class="container mt-3">
+  <div class="row">
+    <% if(data.length>0){ %>
+      <% for(let p of data){ %>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+      <div class="card bg-transparent border-white" style="border:2px solid #fff;">
+        <h5 class="card-header text-bold text-left" style="color:#fdfdfd"><%= p._title %> </h5>
+          <img src="../<%= p._image %>" class="img-fluid">
+          <div class="card-body">
+              <h4 class="card-title text-center" style="color:#00ddff">Price: <%= p._price %></h4>
+              <p class="card-text"><%= p._description %></p>
+              <a href="/shop/product_details/<%=p._id%>" class="btn btn-outline-info d-block"> Detail's </a>
+          </div>
+      </div><br>
+      </div>
+      <%}%>
+      <%} else{%>
+        <h2>Data not Found!!</h2>
+      <%}%>
+  </div>
+</div>
+
+
+<%- include('../INCLUDES/fotter.ejs') %>

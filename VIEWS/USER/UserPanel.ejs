@@ -1,0 +1,71 @@
+<%- include('../INCLUDES/header.ejs') %>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/CSS/UserView.css">
+</head>
+<body>
+<%- include('../INCLUDES/userNav.ejs') %>
+<section>
+    <div class="hero">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button class="toggle-btn text-center" onClick="loginAdmin()">login</button>
+                <button class="toggle-btn text-center" onClick="addAdmin()">Register</button>
+            </div>
+            <form action="/user/login" method="POST" id="login" class="input-group-login">
+                <input type="text" class="input-field" name="email" placeholder="User-Id" required>
+                <input type="text" class="input-field" name="password" placeholder="Password" required><br><br>
+                <div style="display:flex;">
+                <input type="checkbox" name="check" class="check-box"><p class="span1">Remember me</p>
+                </div>
+                <button class="submit-btn" style="margin-left:1rem;" type="submit">Login</button>
+            </form>
+            <form action="/user/register" method="POST" id="add" class="input-group-register">
+                <input type="text" class="input-field" name="name" placeholder="Enter your name" required>
+                <input type="text" class="input-field" name="email" placeholder="Email-Id" required>
+                <input type="text" class="input-field" name="phone" placeholder="Phone-No" required>
+                <input type="text" class="input-field" name="age" placeholder="Age" required>
+                <input type="text" class="input-field" name="password" placeholder="Set Password" required><br><br>
+                <div style="display:flex;">
+                <input type="checkbox" name="check" class="check-box"><p class="span1">I agree to the terms and conditions</p>
+                </div>
+                <button class="submit-btn" style="margin-left:2px;margin-top:-1px;" type="submit">Register</button>
+            </form>
+        </div> 
+    </div>
+</section>
+<script type="text/javascript">
+    var x=document.getElementById("login");
+    var y=document.getElementById("add");
+    var z=document.getElementById("btn");
+
+    function addAdmin()
+    {
+        x.style.left='-500px';
+        y.style.left='23px';
+        z.style.left='110px';
+    }
+    function loginAdmin()
+    {
+        x.style.left='22px';
+        y.style.left='450px';
+        z.style.left='0px';
+    }
+    function createBubble()
+    {
+        const section = document.querySelector('section')
+        const createElement = document.createElement('span')
+        var size = Math.random() * 60;
+        createElement.style.width =20 + size + 'px';
+        createElement.style.height = 20 + size + 'px';
+        createElement.style.left = Math.random() * innerWidth + 'px';
+        section.appendChild(createElement);
+
+        setTimeout(()=>{
+           createElement.remove(); 
+        },4000)
+    }
+    setInterval(createBubble,60)
+</script>
+<%- include('../INCLUDES/fotter.ejs') %>

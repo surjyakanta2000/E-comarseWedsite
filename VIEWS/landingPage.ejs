@@ -1,0 +1,35 @@
+<%- include('INCLUDES/header.ejs') %>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/CSS/LandingPage.css">
+</head>
+<body>   
+<%- include('INCLUDES/adminNav.ejs') %>
+<a href="/admin/login">
+<div class="slider1">
+    <h1 style="margin-left: 4rem;color:#6cdbed;">Admin Here</h1>
+    <div class="admin-img">
+        <img src="/IMAGES/admin.png">
+    </div>
+    <div class="description">
+        <p>
+            Only Admin can Access this...
+        </p>
+    </div>
+</div>
+</a>
+<div class="slider2">
+    <h1 style="margin-right: 5rem;color:#6cdbed;">User Here</h1>
+    <div class="user-img">
+        <img src="/IMAGES/user.png">
+    </div>
+    <div class="description">
+        <p>
+            Only User can Access this...
+        </p>
+    </div>
+</div>
+<div class="slider3">
+    <h1 style="color:#6cdbed;">content</h1>
+</div>
+<%- include('INCLUDES/fotter.ejs') %>

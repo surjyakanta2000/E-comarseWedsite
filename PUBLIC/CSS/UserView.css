@@ -1,0 +1,150 @@
+body{
+    background:url(/IMAGES/background.png) no-repeat;
+    background-size: 100% 100vh;
+    font-family: 'Lobster', cursive;
+}
+section
+{
+    width:100%;
+    height: 92vh;
+    position: relative;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+   
+}
+.hero
+{
+    display:flex; 
+    justify-content:center;
+    align-items:center;
+}
+.form-box{
+    width:400px;
+    height: 500px;
+    position: relative;
+    margin:6% auto;
+    /* background:transparent; */
+    background:rgba(128, 128, 128, 0.384);
+    padding:2px;
+    overflow: hidden;
+}
+.button-box{
+    width:220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px #6cdbed;
+    border-radius:30px;
+}
+.toggle-btn{
+    padding:10px 30px;
+    cursor: pointer;
+    background:transparent;
+    border:0;
+    border-radius:30px;
+    outline:none;
+    text-align:center;
+    position: relative;
+}
+#btn
+{
+    top:0;
+    left:0;
+    position: absolute;
+    width:110px;
+    height: 100%;
+    background:linear-gradient(to right, #6cdbed,#00ff9d);
+    border-radius:30px;
+    transition:.5s;
+}
+.input-group-login
+{
+    top:180px;
+    position: absolute;
+    widows: 280px;
+    transition:.5s;
+}
+.input-group-register
+{
+    top:100px;
+    position: absolute;
+    widows: 280px;
+    transition:.5s;
+}
+.input-field
+{
+    width:90%;
+    padding:10px 0;
+    margin:5px 0;
+    /* margin-left: 20px; */
+    border-left: 0;
+    border-top: 0;
+    border-bottom: 1px solid rgb(3, 3, 3);
+    border-right: 0;
+    outline:none;
+    background:transparent;
+    color: #fff;
+}
+.submit-btn{
+    width:85%;
+    padding:10px 30px;
+    cursor: pointer;
+    display:block;
+    margin:auto;
+    background:linear-gradient(to right, #6cdbed,#00ff9d);
+    border:0;
+    outline:none;
+    border-radius:30px;
+    margin-top: 20px;
+}
+.check-box
+{
+    margin:10px 30px 10px 20px;
+}
+.span1{
+    color:rgb(3, 3, 3);
+    font-size:16px;
+    bottom:40px;
+}
+#login
+{
+    left:15px;
+}
+#add
+{
+    left:130%;
+}
+section span{
+  position:absolute;
+  bottom:-50px;
+  background:transparent;
+  border-radius:50px;
+  
+  pointer-events:none;
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.5);
+  animation: animate 4s linear infinite;
+}
+section span:before{
+    content:'';
+    position:absolute;
+    width: 100%;
+    height:100%;
+    transform:scale(0.25) translate(-70%,-70%);
+    background:radial-gradient(#fff,transparent);
+    border-radius:50px;
+}
+@keyframes animate
+{
+    0%{
+        transform:translateY(0%);
+        opacity: 1;
+    }
+    99%{
+        opacity: 1;
+    }
+    100%{
+        transform:translateY(-1200%);
+        opacity: 1;
+    }
+}

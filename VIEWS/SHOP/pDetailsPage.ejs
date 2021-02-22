@@ -1,0 +1,45 @@
+<%- include('../INCLUDES/header.ejs') %>
+<link rel="stylesheet" href="/CSS/ProductDetails.css">
+</head>
+<body>
+    <%- include('../INCLUDES/userNav.ejs') %>
+    <div class="model-holder">
+        <div class="model">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div style="margin-top: 1rem;" class="container">
+            <div style="margin: 10px;align-items: center;" class="option row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                   <img src="../../<%= data._image %>" class="img-fluid">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="card-header"><h4 class="text-white">Title:<%= data._title%></h4></div>
+                        <p class="fa fa-star text-warning"></p>
+                        <p class="fa fa-star text-warning"></p>
+                        <p class="fa fa-star text-warning"></p>
+                        <p class="fa fa-star text-warning"></p>
+                        <p class="fa fa-star text-dark"></p>
+                    <div class="card-body">
+                        <h3 class="text-success"><i class="fa fa-inr" aria-hidden="true"></i>price:<%= data._price%> </h3>
+                        <!-- <input type="hidden" name="product_id" value="<%= data._id%>"> -->
+                        <li class="text-info"><%= data._description %></li>
+                        
+                    </div>
+                    <div style="align-items: center;" class="row">
+                     <!-- <form method="post" action="/user/cart">   -->
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                            <a href="/user/cart/<%= data._id%>"><button  class="addbtn"><i class="fa fa-cart-arrow-down" style="padding: .05rem;" aria-hidden="true"></i>ADD CART</button></a>
+                         </div><br><br>
+                         <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                            <button class="buybtn"><i class="fa fa-bolt text-white" aria-hidden="true"style="padding: .05rem;"></i>BUY NOW</button>
+                         </div>
+                    <!-- </form>  -->
+                    </div>
+                 </div>
+            </div>
+        </div>
+        </div>
+        </div>
+<%- include('../INCLUDES/fotter.ejs') %>
