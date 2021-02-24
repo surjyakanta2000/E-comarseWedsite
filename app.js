@@ -17,7 +17,7 @@ const UserView = require('./ROUTERS/userRoutes');
 const AuthModule=require('./MODELS/AdminModel');
 const userAuthModule = require('./MODELS/UserModel');
 const ShopView = require('./ROUTERS/shopRoutes');
-const port = process.env.PORT || 8000;
+
 
 app.use(body_parser.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,'/PUBLIC')));
@@ -119,8 +119,8 @@ app.use('/demo',(req,res)=>{
 mongoose.connect(process.env.DB_CONNECT,{useNewUrlParser:true,useUnifiedTopology:true})
 .then(result=>{
     console.log(result);
-    app.listen(port,()=>{
-        console.log(`listening on port no:${port}`);
+    app.listen(process.env.PORT,()=>{
+        console.log(`listening on port no:8000`);
     });
 }).catch(err=>{
     console.error(err);
